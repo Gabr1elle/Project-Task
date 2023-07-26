@@ -1,20 +1,20 @@
 <!-- src/components/TarefaItem.vue -->
 <template>
+
+<div class="container" col-3>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    <div v-if="!editing">
+    <div>
       <span :class="{ completed: tarefa.completed }">{{ tarefa.title }}</span>
       <span>{{ tarefa.text }}</span>
       <div>
-        <button @click="concluirTarefa" class="btn btn-success btn-sm mr-2">
-          Concluir
-        </button>
-        <button @click="excluirTarefa" class="btn btn-danger btn-sm">
-          Excluir
-        </button>
+        <button type="button" @click="concluirTarefa" class="btn btn-primary btn-xs mr-2 ml-3">Concluir</button>
+        <button type="button" @click="excluirTarefa" class="btn btn-outline-success btn-xs mr-2 ml-3">Excluir</button>
       </div>
     </div>
   </li>
+  </div>
 </template>
+
 
 <script>
 export default {

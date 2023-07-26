@@ -10,7 +10,8 @@
           data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,6 +30,9 @@
       </div>
     </nav>
     <lista-tarefas></lista-tarefas>
+    <footer class="custom-footer">
+      TaskMaster - Gerenciador de tarefas @2023
+    </footer>
   </div>
 </template>
 
@@ -46,14 +50,6 @@ export default {
 
 
 
-<style>
-#app {
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-</style>
-
-
 
 <style>
 #app {
@@ -62,11 +58,23 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #fffdfd;
+  background: #dad9d9;
 }
 
 .container-fluid {
   margin-top: 0;
-  background: #d1cfcf;
+  background: #13e2bf;
+}
+
+.custom-footer {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #2c3e50;
+  color: bisque;
 }
 </style>

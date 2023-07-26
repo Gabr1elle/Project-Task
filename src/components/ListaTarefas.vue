@@ -1,33 +1,39 @@
 <template>
-  <div class="lista-tarefas container mt-4">
-    <h2>Lista de Tarefas</h2>
-    <div class="task-input input-group mb-3">
-      <input
-        v-model="newTask.title"
-        @keyup.enter="addTask"
-        type="text"
-        class="form-control"
-        placeholder="Digite o título da tarefa"
-      />
-      <input
-        v-model="newTask.text"
-        type="text"
-        class="form-control"
-        placeholder="Digite o texto da tarefa"
-      />
-      <div class="input-group-append">
-        <button @click="addTask" class="btn btn-primary">Adicionar</button>
+  <div class="lista-tarefas container mt-3 mb-2 col-6">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Gerenciador de Tarefas</h2>
+        <div class="task-input input-group mb-3 mt-3 ml-4">
+          <input
+            v-model="newTask.title"
+            @keyup.enter="addTask"
+            type="text"
+            class="form-control"
+            placeholder="Digite o título da tarefa"
+          />
+          <input
+            v-model="newTask.text"
+            type="text"
+            class="form-control"
+            placeholder="Digite o texto da tarefa"
+          />
+          <div class="input-group-append">
+            <button @click="addTask" type="button" class="btn btn-outline-dark">
+              Adicionar
+            </button>
+          </div>
+        </div>
+        <ul class="list-group">
+          <tarefa-item
+            v-for="tarefa in tasks"
+            :key="tarefa.id"
+            :tarefa="tarefa"
+            @concluir-tarefa="concluirTarefa"
+            @excluir-tarefa="excluirTarefa"
+          />
+        </ul>
       </div>
     </div>
-    <ul class="list-group">
-      <tarefa-item
-        v-for="tarefa in tasks"
-        :key="tarefa.id"
-        :tarefa="tarefa"
-        @concluir-tarefa="concluirTarefa"
-        @excluir-tarefa="excluirTarefa"
-      />
-    </ul>
   </div>
 </template>
 
@@ -81,5 +87,9 @@ export default {
 
 .completed {
   text-decoration: line-through;
+}
+
+.container-menor {
+  max-width: 800px;
 }
 </style>
