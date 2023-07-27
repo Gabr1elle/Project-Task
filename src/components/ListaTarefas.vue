@@ -1,37 +1,45 @@
 <template>
-  <div class="lista-tarefas container mt-3 mb-2 col-6">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Gerenciador de Tarefas</h2>
-        <div class="task-input input-group mb-3 mt-3 ml-4">
-          <input
-            v-model="newTask.title"
-            @keyup.enter="addTask"
-            type="text"
-            class="form-control"
-            placeholder="Digite o título da tarefa"
-          />
-          <input
-            v-model="newTask.text"
-            type="text"
-            class="form-control"
-            placeholder="Digite o texto da tarefa"
-          />
-          <div class="input-group-append">
-            <button @click="addTask" type="button" class="btn btn-outline-dark">
-              Adicionar
-            </button>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="text-center mb-4">Gerenciador de Tarefas</h2>
+            <div class="task-input input-group mb-3">
+              <input
+                v-model="newTask.title"
+                @keyup.enter="addTask"
+                type="text"
+                class="form-control"
+                placeholder="Digite o título da tarefa"
+              />
+              <input
+                v-model="newTask.text"
+                type="text"
+                class="form-control"
+                placeholder="Digite o texto da tarefa"
+              />
+              <div class="input-group-append">
+                <button
+                  @click="addTask"
+                  type="button"
+                  class="btn btn-outline-dark"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
+            <ul class="list-group">
+              <tarefa-item
+                v-for="tarefa in tasks"
+                :key="tarefa.id"
+                :tarefa="tarefa"
+                @concluir-tarefa="concluirTarefa"
+                @excluir-tarefa="excluirTarefa"
+              />
+            </ul>
           </div>
         </div>
-        <ul class="list-group">
-          <tarefa-item
-            v-for="tarefa in tasks"
-            :key="tarefa.id"
-            :tarefa="tarefa"
-            @concluir-tarefa="concluirTarefa"
-            @excluir-tarefa="excluirTarefa"
-          />
-        </ul>
       </div>
     </div>
   </div>
@@ -39,6 +47,7 @@
 
 <script>
 import TarefaItem from "./TarefaItem.vue";
+import moment from 'moment';
 
 export default {
   components: {
@@ -72,6 +81,7 @@ export default {
       const tarefa = this.tasks.find((tarefa) => tarefa.id === id);
       if (tarefa) {
         tarefa.completed = true;
+        tarefa.completedAt = moment().format("YYYY-MM-DD HH:mm:ss"); // Define a data e hora de conclusão
       }
     },
 
@@ -82,8 +92,17 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Estilos específicos para este componente principal podem ser colocados aqui */
+
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap");
+
+.h2 {
+  font-family: "Raleway", sans-serif;
+}
+
+.template {
+  font-family: "Raleway", sans-serif;
+}
 
 .completed {
   text-decoration: line-through;
