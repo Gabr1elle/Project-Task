@@ -46,12 +46,14 @@
 </template>
 
 <script>
+
 import TarefaItem from "./TarefaItem.vue";
 import moment from 'moment';
 
 export default {
   components: {
     TarefaItem,
+    moment,
   },
   data() {
     return {
@@ -60,33 +62,34 @@ export default {
         text: "",
         completed: false,
       },
-      tasks: [],
     };
+  },
+  computed: {
+    tasks() {
+      return this.$store.getters.allTasks;
+    },
   },
   methods: {
     addTask() {
       if (this.newTask.title.trim() !== "" && this.newTask.text.trim() !== "") {
-        this.tasks.push({
+        const newTask = {
           id: Date.now(), // Gerando um ID único com base no timestamp
           title: this.newTask.title.trim(),
           text: this.newTask.text.trim(),
           completed: false,
-        });
+        };
+        this.$store.dispatch('addTask', newTask);
         this.newTask.title = "";
         this.newTask.text = "";
       }
     },
 
     concluirTarefa(id) {
-      const tarefa = this.tasks.find((tarefa) => tarefa.id === id);
-      if (tarefa) {
-        tarefa.completed = true;
-        tarefa.completedAt = moment().format("YYYY-MM-DD HH:mm:ss"); // Define a data e hora de conclusão
-      }
+      this.$store.dispatch('completeTask', id);
     },
 
     excluirTarefa(id) {
-      this.tasks = this.tasks.filter((tarefa) => tarefa.id !== id);
+      this.$store.dispatch('removeTask', id);
     },
   },
 };
