@@ -1,38 +1,52 @@
-<!-- TarefaItem.vue -->
 <template>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
-      <span :class="{ completed: tarefa.completed }">{{ tarefa.title }}</span>
-      <span>{{ tarefa.text }}</span>
+  <li class="list-group-item">
+    <div class="d-flex justify-content-between">
       <div>
-        <span v-if="tarefa.completed">Concluído em: {{ formatarDataHoraConclusao(tarefa.completedAt) }}</span>
-        <button type="button" @click="concluirTarefa" class="btn btn-primary btn-xs mr-2 ml-3">Concluir</button>
+        <h5 class="mb-1">{{ tarefa.title }}</h5>
+        <p class="mb-1">{{ tarefa.text }}</p>
+        <small>{{ tarefa.completedAt }}</small>
       </div>
-        <button type="button" @click="excluirTarefa" class="btn btn-outline-success btn-xs mr-2 ml-3">Excluir</button>
+      <div>
+        <button 
+          @click="concluirTarefa(tarefa.id)"
+          v-if="!tarefa.completed"
+          class="btn btn-success btn-xs mr-2">
+        <font-awesome-icon :icon="['fas', 'check']" />
+        </button>
+
+        <button
+          @click="iniciarEdicao"
+          v-if="!tarefaEmEdicao"
+          class="btn btn-primary btn-xs mr-2 ml-3">
+          <font-awesome-icon :icon="['fas', 'pen']" />
+        </button>
+
+        <button
+          @click="excluirTarefa(tarefa.id)"
+          class="btn btn-danger btn-xs"
+        ><font-awesome-icon :icon="['fas', 'xmark']" />
+        </button>
+
+      </div>
     </div>
   </li>
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
-  props: {
-    tarefa: {
-      type: Object,
-      required: true,
-    },
-  },
-
+  props: ['tarefa', 'tarefaEmEdicao'], // Propriedade para verificar se uma tarefa está em edição
+  
   methods: {
-    concluirTarefa() {
-      this.$emit("concluir-tarefa", this.tarefa.id);
+    // ...mapActions(['setTarefaEmEdicao']),
+
+    concluirTarefa(id) {
+      this.$emit("concluir-tarefa", id);
     },
-    excluirTarefa() {
-      this.$emit("excluir-tarefa", this.tarefa.id);
+    excluirTarefa(id) {
+      this.$emit("excluir-tarefa", id);
     },
-    formatarDataHoraConclusao(dataHora) {
-      return moment(dataHora).format("YYYY-MM-DD HH:mm:ss");
+    iniciarEdicao() {
+      this.$emit("iniciar-edicao"); // Emitir o evento de iniciar edição
     },
   },
 };
@@ -43,4 +57,5 @@ export default {
   text-decoration: line-through;
 }
 </style>
+
 
