@@ -50,7 +50,7 @@ export default {
 
 <style>
 body {
-  background: #e6e6e6;
+  background: #ffffff;
 }
 
 #app {
