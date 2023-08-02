@@ -1,11 +1,11 @@
 <template>
-  <div class="container mt-3">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
+  <div class="container">
+    <div class="row justify-content-center align-items-center vh-100">
+      <div class="col-md-10 my-5 py-5">
         <div class="card">
-          <div class="card-body">
-            <h2 class="text-center mb-4">Gerenciador de Tarefas</h2>
-            <div class="task-input input-group mb-3">
+          <div class="card-body card-body-centered text-center ">
+            <h2 class="text-center mb-5">TaskMaster - Gerenciando suas tarefas</h2>
+            <div class="task-input input-group mb-3 ">
               <input
                 v-model="newTask.title"
                 @keyup.enter="addTask"
@@ -29,15 +29,24 @@
                 </button>
               </div>
             </div>
-            <ul class="list-group">
+            <ul class="list-group ">
               <tarefa-item
                 v-for="tarefa in tasks"
                 :key="tarefa.id"
                 :tarefa="tarefa"
+                :tarefaEmEdicao="tarefaEmEdicao"
                 @concluir-tarefa="concluirTarefa"
                 @excluir-tarefa="excluirTarefa"
+                @iniciar-edicao="iniciarEdicao"
               />
             </ul>
+
+            <!-- Adicionar o componente de edição diretamente aqui -->
+            <editar-tarefa
+              v-if="tarefaEmEdicao"
+              :tarefa="tarefaEmEdicao"
+              @concluir-edicao="concluirEdicao"
+            />
           </div>
         </div>
       </div>
@@ -46,14 +55,14 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
-import moment from 'moment';
+import EditarTarefa from "./EditarTarefa.vue";
 
 export default {
   components: {
     TarefaItem,
-    moment,
+    EditarTarefa,
   },
   data() {
     return {
@@ -62,6 +71,7 @@ export default {
         text: "",
         completed: false,
       },
+      tarefaEmEdicao: null,
     };
   },
   computed: {
@@ -70,31 +80,42 @@ export default {
     },
   },
   methods: {
+    ...mapActions(['setTarefaEmEdicao']), 
     addTask() {
       if (this.newTask.title.trim() !== "" && this.newTask.text.trim() !== "") {
         const newTask = {
-          id: Date.now(), // Gerando um ID único com base no timestamp
+          id: Date.now(),
           title: this.newTask.title.trim(),
           text: this.newTask.text.trim(),
           completed: false,
         };
-        this.$store.dispatch('addTask', newTask);
+        this.$store.dispatch("addTask", newTask);
         this.newTask.title = "";
         this.newTask.text = "";
+        this.tarefaEmEdicao = null;
       }
     },
 
     concluirTarefa(id) {
-      this.$store.dispatch('completeTask', id);
+      this.$store.dispatch("completeTask", id);
+      this.tarefaEmEdicao = null;
     },
-
     excluirTarefa(id) {
-      this.$store.dispatch('removeTask', id);
+      this.$store.dispatch("removeTask", id);
+
+      if (this.tarefaEmEdicao && this.tarefaEmEdicao.id === id) {
+        this.tarefaEmEdicao = null;
+      }
+    },
+    iniciarEdicao(tarefa) {
+      this.tarefaEmEdicao = tarefa;
+    },
+    concluirEdicao() {
+      this.tarefaEmEdicao = null;
     },
   },
 };
 </script>
-
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap");

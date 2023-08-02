@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #00ffff;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">TaskMaster</a>
         <button
@@ -17,20 +17,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ba">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <router-link class="nav-link active" aria-current="page" to="/">Home</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Templates</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sobre</a>
+              <router-link class="nav-link" to="/sobre">Sobre</router-link>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <lista-tarefas></lista-tarefas>
-    <footer class="custom-footer">
+  
+    <router-view></router-view>
+
+    <footer class="custom-footer position-fixed">
       TaskMaster - Gerenciador de tarefas @2023
     </footer>
   </div>
@@ -39,44 +38,41 @@
 
 
 <script>
-import ListaTarefas from "./components/ListaTarefas.vue";
 import moment from 'moment';
 
 export default {
   components: {
-    ListaTarefas,
     moment,
   },
 };
+
 </script>
 
-
-
-
 <style>
+body {
+  background: #e6e6e6;
+}
+
 #app {
    font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  background: #dad9d9;
+  color: #ffffff;
 }
 
 .container-fluid {
   margin-top: 0;
-  background: #13e2bf;
 }
 
 .custom-footer {
   background-color: #f8f9fa;
   text-align: center;
   padding: 10px;
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #2c3e50;
-  color: bisque;
+  background: #73756e;
+  color: rgb(255, 255, 255);
 }
 </style>
