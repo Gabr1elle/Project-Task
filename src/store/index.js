@@ -7,6 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [],
+    tarefaEmEdicao: null,
   },
   mutations: {
     ADD_TASK(state, task) {
@@ -22,7 +23,12 @@ export default new Vuex.Store({
         task.completedAt = new Date().toISOString();
       }
     },
+
+    SET_TAREFA_EM_EDICAO(state, tarefa) {
+      state.tarefaEmEdicao = tarefa;
+    },
   },
+
   actions: {
     addTask({ commit }, task) { // Adicione a definição da action addTask
       commit('ADD_TASK', task);
@@ -32,6 +38,9 @@ export default new Vuex.Store({
     },
     completeTask({ commit }, id) {
       commit('COMPLETE_TASK', id);
+    },
+    setTarefaEmEdicao({ commit }, tarefa) {
+      commit('SET_TAREFA_EM_EDICAO', tarefa);
     },
   },
   getters: {
