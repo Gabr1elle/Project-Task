@@ -1,6 +1,9 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
+import moment from 'moment';
+
+moment.locale('pt-br');
 
 Vue.use(Vuex);
 
@@ -20,7 +23,7 @@ export default new Vuex.Store({
       const task = state.tasks.find((task) => task.id === id);
       if (task) {
         task.completed = true;
-        task.completedAt = new Date().toISOString();
+        task.completedAt = moment().format('LLLL');;
       }
     },
 

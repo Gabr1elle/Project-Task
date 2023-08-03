@@ -38,13 +38,14 @@
 
 
 <script>
-import moment from 'moment';
+// import moment from 'moment';
 
-export default {
-  components: {
-    moment,
-  },
-};
+// export default {
+//   components: {
+//     moment,
+  
+//   },
+// };
 
 </script>
 
