@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #00ffff;">
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #009f9f;">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">TaskMaster</a>
         <button
@@ -38,14 +38,7 @@
 
 
 <script>
-// import moment from 'moment';
 
-// export default {
-//   components: {
-//     moment,
-  
-//   },
-// };
 
 </script>
 

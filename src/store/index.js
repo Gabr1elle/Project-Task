@@ -10,7 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tasks: [],
-    tarefaEmEdicao: null,
+
   },
   mutations: {
     ADD_TASK(state, task) {
@@ -27,10 +27,17 @@ export default new Vuex.Store({
       }
     },
 
-    SET_TAREFA_EM_EDICAO(state, tarefa) {
-      state.tarefaEmEdicao = tarefa;
-    },
+    // UPDATE_TASK(state, updateTask) {
+    //   const index = state.tasks.findIndex(task => task.id === updateTask.id);
+    //   if (index !== -1) {
+    //     state.tasks.splice(index, 1, updateTask);
+    //   }
+    // },
+    // SET_TAREFA_EM_EDICAO(state, tarefa) {
+    //   state.tarefaEmEdicao = tarefa;
+    // },
   },
+
 
   actions: {
     addTask({ commit }, task) { // Adicione a definição da action addTask
@@ -42,9 +49,16 @@ export default new Vuex.Store({
     completeTask({ commit }, id) {
       commit('COMPLETE_TASK', id);
     },
-    setTarefaEmEdicao({ commit }, tarefa) {
-      commit('SET_TAREFA_EM_EDICAO', tarefa);
-    },
+
+    // editTask({ commit, state }, updatedTask) {
+    //   const taskIndex = state.tasks.findIndex(task => task.id === updatedTask.id);
+    //   if (taskIndex !== -1) {
+    //     commit('UPDATE_TASK', updatedTask);
+    //   }
+    // },
+    // setTarefaEmEdicao({ commit }, tarefa) {
+    //   commit('SET_TAREFA_EM_EDICAO', tarefa);
+    // },
   },
   getters: {
     allTasks: (state) => state.tasks,

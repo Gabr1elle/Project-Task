@@ -10,20 +10,20 @@
                 v-model="newTask.title"
                 @keyup.enter="addTask"
                 type="text"
-                class="form-control"
+                class="form-control mr-4"
                 placeholder="Digite o título da tarefa"
               />
               <input
                 v-model="newTask.text"
                 type="text"
-                class="form-control"
+                class="form-control mr-4"
                 placeholder="Digite o texto da tarefa"
               />
               <div class="input-group-append">
                 <button
                   @click="addTask"
                   type="button"
-                  class="btn btn-outline-dark"
+                  class="btn btn-outline-dark mr-4"
                 >
                   Adicionar
                 </button>
@@ -34,19 +34,10 @@
                 v-for="tarefa in tasks"
                 :key="tarefa.id"
                 :tarefa="tarefa"
-                :tarefaEmEdicao="tarefaEmEdicao"
                 @concluir-tarefa="concluirTarefa"
                 @excluir-tarefa="excluirTarefa"
-                @iniciar-edicao="iniciarEdicao"
               />
             </ul>
-
-            <!-- Adicionar o componente de edição diretamente aqui -->
-            <editar-tarefa
-              v-if="tarefaEmEdicao"
-              :tarefa="tarefaEmEdicao"
-              @concluir-edicao="concluirEdicao"
-            />
           </div>
         </div>
       </div>
@@ -59,10 +50,12 @@ import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
 import EditarTarefa from "./EditarTarefa.vue";
 
+
 export default {
   components: {
     TarefaItem,
     EditarTarefa,
+
   },
   data() {
     return {
@@ -71,16 +64,15 @@ export default {
         text: "",
         completed: false,
       },
-      tarefaEmEdicao: null,
     };
   },
   computed: {
     tasks() {
       return this.$store.getters.allTasks;
+      
     },
   },
   methods: {
-    ...mapActions(['setTarefaEmEdicao']), 
     addTask() {
       if (this.newTask.title.trim() !== "" && this.newTask.text.trim() !== "") {
         const newTask = {
@@ -92,26 +84,28 @@ export default {
         this.$store.dispatch("addTask", newTask);
         this.newTask.title = "";
         this.newTask.text = "";
-        this.tarefaEmEdicao = null;
+        
       }
     },
 
     concluirTarefa(id) {
       this.$store.dispatch("completeTask", id);
-      this.tarefaEmEdicao = null;
+    
     },
     excluirTarefa(id) {
       this.$store.dispatch("removeTask", id);
 
-      if (this.tarefaEmEdicao && this.tarefaEmEdicao.id === id) {
-        this.tarefaEmEdicao = null;
-      }
     },
-    iniciarEdicao(tarefa) {
-      this.tarefaEmEdicao = tarefa;
+
+     // Método para abrir o modal com detalhes da tarefa
+    mostrarDetalhes(tarefa) {
+      this.selectedTask = tarefa;  
+
     },
-    concluirEdicao() {
-      this.tarefaEmEdicao = null;
+
+    // Método para limpar a tarefa selecionada quando o modal é fechado
+    clearSelectedTask() {
+      this.selectedTask = null;
     },
   },
 };
@@ -135,4 +129,5 @@ export default {
 .container-menor {
   max-width: 800px;
 }
+
 </style>
