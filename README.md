@@ -6,7 +6,7 @@ O Task Master é a ferramenta definitiva para otimizar sua organização diária
 
 Nada de curvas de aprendizado. A interface limpa e descomplicada permite que você comece a gerenciar suas tarefas instantaneamente. Basta digitar a descrição da tarefa na caixa de texto e você está pronto para começar!
 
-![image alt](https://hackmd.io/_uploads/SJzDKXy23.png "Exemmplo:")
+![](https://hackmd.io/_uploads/SJzDKXy23.png "Exemplo:")
 
 
 ### Foco na Produtividade: 
