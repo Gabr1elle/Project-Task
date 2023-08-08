@@ -15,11 +15,13 @@
           <font-awesome-icon :icon="['fas', 'check']" />
         </button>
 
-        <!-- <button
-          @click="iniciarEdicao"
-          class="btn btn-primary btn-xs mr-2 ml-3">
+        <button
+          type="button"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"
+          @click="editarTarefa"
+          class="btn btn-primary btn-xs mx-2">
           <font-awesome-icon :icon="['fas', 'pen']" />
-        </button> -->
+        </button>
 
         <button @click="excluirTarefa(tarefa.id)" class="btn btn-danger btn-xs">
           <font-awesome-icon :icon="['fas', 'xmark']" />
@@ -40,6 +42,12 @@ export default {
     excluirTarefa(id) {
       this.$emit("excluir-tarefa", id);
     },
+    editarTarefa() {
+      const myModalEl = document.getElementById('exampleModal')
+      myModalEl.addEventListener('show.bs.modal', event => {
+        console.log('teste');
+      })
+    }
   },
 };
 </script>
