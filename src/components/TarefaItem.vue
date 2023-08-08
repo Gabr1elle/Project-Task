@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between">
       <div>
         <h5 class="mb-1">{{ tarefa.title }}</h5>
-        <p class="mb-1">{{ tarefa.text }}</p>
+        <tt class="mb-1">{{ tarefa.text }}</tt>
         <small>{{ tarefa.completedAt }}</small>
       </div>
       <div>
