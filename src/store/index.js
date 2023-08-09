@@ -52,13 +52,13 @@ export default new Vuex.Store({
       commit('COMPLETE_TASK', id);
     },
 
-    selecionarTarefa({ commit }, tarefa) {
+    SET_TAREFA_SELECIONADA({ commit }, tarefa) {
       commit("SET_TAREFA_SELECIONADA", tarefa);
     },
 
     atualizarTarefa({ commit }, tarefaEditada) {
       commit("ATUALIZAR_TAREFA", tarefaEditada);
-      commit("SET_TAREFA_SELECIONADA", null);
+      // commit("SET_TAREFA_SELECIONADA", null);
     },
   },
 

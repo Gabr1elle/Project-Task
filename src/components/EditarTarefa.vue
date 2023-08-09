@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4>Editando Tarefa</h4>
+    <h4></h4>
     <div v-if="tarefa">
       <input v-model="tarefa.title" class="form-control mb-2" />
       <textarea v-model="tarefa.text" class="form-control mb-2"></textarea>

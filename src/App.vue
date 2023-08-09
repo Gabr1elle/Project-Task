@@ -58,19 +58,7 @@
             ></button>
           </div>
           <div class="modal-body">
-            <editar-tarefa v-if="tarefaSelecionada"></editar-tarefa>
-            
-              <!-- <input
-                v-if="tarefaSelecionada"
-                v-model="tarefaSelecionada.title"
-                class="form-control mb-2"
-              />
-              <textarea
-                v-if="tarefaSelecionada"
-                v-model="tarefaSelecionada.text"
-                class="form-control mb-2"
-              ></textarea> -->
-            
+            <editar-tarefa :tarefa="tarefaSelecionada"></editar-tarefa>
           </div>
           <div class="modal-footer">
             <button
@@ -97,7 +85,7 @@
 
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from "vuex";
 import EditarTarefa from "./components/EditarTarefa.vue"; // Importe o componente de edição
 
 
@@ -113,38 +101,24 @@ export default {
 
   },
   methods: {
-
-
-    ...mapActions("tarefas", ["editarTarefa", "updateTask"]),
-
-
-
     abrirModal() {
       if (this.tarefas.length > 0) {
         this.$store.commit("tarefas/taskSelected", this.tarefas[0]);
       }
       $("#exampleModal").modal("show"); // Abra o modal
     },
-
-
     concluirEdicao(tarefaEditada) {
       this.$store.dispatch("editarTarefa", tarefaEditada);
       this.$store.commit("tarefas/taskSelected", null); // Limpe a tarefa selecionada
       $("#exampleModal").modal("hide"); // Feche o modal
     },
-
-
-
     mostrarDetalhes(tarefa) {
       this.$store.commit("tarefas/taskSelected", tarefa);
       $("#exampleModal").modal("show"); // Abra o modal
     },
-
-
-
     salvarAlteracoes() {
       if (this.tarefaSelecionada) {
-        this.updateTask(this.tarefaSelecionada);
+        this.atualizarTarefa(this.tarefaSelecionada);
         $("#exampleModal").modal("hide"); // Feche o modal após salvar as alterações
       }
     },

@@ -48,14 +48,12 @@
 <script>
 // import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
-import EditarTarefa from "./EditarTarefa.vue";
+
 
 
 export default {
   components: {
     TarefaItem,
-    EditarTarefa,
-
   },
   data() {
     return {

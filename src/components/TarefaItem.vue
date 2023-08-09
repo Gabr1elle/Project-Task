@@ -18,7 +18,7 @@
         <button
           type="button"
           data-bs-toggle="modal" data-bs-target="#exampleModal"
-          @click="editarTarefa"
+          @click="editarTarefa(tarefa)"
           class="btn btn-primary btn-xs mx-2">
           <font-awesome-icon :icon="['fas', 'pen']" />
         </button>
@@ -42,7 +42,8 @@ export default {
     excluirTarefa(id) {
       this.$emit("excluir-tarefa", id);
     },
-    editarTarefa() {
+    editarTarefa(tarefaEscolhida) {
+      this.$store.commit("SET_TAREFA_SELECIONADA", tarefaEscolhida)
       const myModalEl = document.getElementById('exampleModal')
       myModalEl.addEventListener('show.bs.modal', event => {
         console.log('teste');
