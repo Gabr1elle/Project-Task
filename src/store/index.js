@@ -63,6 +63,6 @@ export default new Vuex.Store({
   },
 
   getters: {
-    AllTasks: (state) => state.tarefas,
+    allTasks: (state) => state.tarefas,
   },
 });
