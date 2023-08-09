@@ -46,7 +46,6 @@ export default {
       this.$store.commit("SET_TAREFA_SELECIONADA", tarefaEscolhida)
       const myModalEl = document.getElementById('exampleModal')
       myModalEl.addEventListener('show.bs.modal', event => {
-        console.log('teste');
       })
     }
   },

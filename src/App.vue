@@ -57,21 +57,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <editar-tarefa :tarefa="tarefaSelecionada"></editar-tarefa>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Fechar
-            </button>
-            <button @click="salvarAlteracoes" class="btn btn-primary">
-              Salvar alterações
-            </button>
-          </div>
+          <editar-tarefa :tarefa="tarefaSelecionada"></editar-tarefa>
         </div>
       </div>
     </div>
@@ -88,40 +74,15 @@
 import { mapState } from "vuex";
 import EditarTarefa from "./components/EditarTarefa.vue"; // Importe o componente de edição
 
-
 export default {
   components: {
     EditarTarefa,
   },
 
-
   computed: {
-
     ...mapState(["tarefas", "tarefaSelecionada"]),
-
   },
   methods: {
-    abrirModal() {
-      if (this.tarefas.length > 0) {
-        this.$store.commit("tarefas/taskSelected", this.tarefas[0]);
-      }
-      $("#exampleModal").modal("show"); // Abra o modal
-    },
-    concluirEdicao(tarefaEditada) {
-      this.$store.dispatch("editarTarefa", tarefaEditada);
-      this.$store.commit("tarefas/taskSelected", null); // Limpe a tarefa selecionada
-      $("#exampleModal").modal("hide"); // Feche o modal
-    },
-    mostrarDetalhes(tarefa) {
-      this.$store.commit("tarefas/taskSelected", tarefa);
-      $("#exampleModal").modal("show"); // Abra o modal
-    },
-    salvarAlteracoes() {
-      if (this.tarefaSelecionada) {
-        this.atualizarTarefa(this.tarefaSelecionada);
-        $("#exampleModal").modal("hide"); // Feche o modal após salvar as alterações
-      }
-    },
   },
 };
 </script>

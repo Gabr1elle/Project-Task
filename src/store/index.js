@@ -9,7 +9,10 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     tarefas: [],
-    tarefaSelecionada: null,
+    tarefaSelecionada: {
+      id: null,
+      completed: null,
+    },
   },
 
   mutations: {
@@ -26,11 +29,9 @@ export default new Vuex.Store({
         tarefa.completedAt = moment().format('LLLL');
       }
     },
-
     SET_TAREFA_SELECIONADA(state, tarefa) {
       state.tarefaSelecionada = tarefa;
     },
-
     ATUALIZAR_TAREFA(state, tarefaEditada) {
       const index = state.tarefas.findIndex((tarefa) => tarefa.id === tarefaEditada.id);
       if (index !== -1) {
@@ -58,7 +59,6 @@ export default new Vuex.Store({
 
     atualizarTarefa({ commit }, tarefaEditada) {
       commit("ATUALIZAR_TAREFA", tarefaEditada);
-      // commit("SET_TAREFA_SELECIONADA", null);
     },
   },
 
