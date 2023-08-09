@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 import moment from 'moment';
@@ -9,58 +8,61 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    tasks: [],
-
+    tarefas: [],
+    tarefaSelecionada: null,
   },
+
   mutations: {
-    ADD_TASK(state, task) {
-      state.tasks.push(task);
+    ADD_TASK(state, tarefa) {
+      state.tarefas.push(tarefa);
     },
     REMOVE_TASK(state, id) {
-      state.tasks = state.tasks.filter((task) => task.id !== id);
+      state.tarefas = state.tarefas.filter((tarefa) => tarefa.id !== id);
     },
     COMPLETE_TASK(state, id) {
-      const task = state.tasks.find((task) => task.id === id);
-      if (task) {
-        task.completed = true;
-        task.completedAt = moment().format('LLLL');;
+      const tarefa = state.tarefas.find((tarefa) => tarefa.id === id);
+      if (tarefa) {
+        tarefa.completed = true;
+        tarefa.completedAt = moment().format('LLLL');
       }
     },
 
-    // UPDATE_TASK(state, updateTask) {
-    //   const index = state.tasks.findIndex(task => task.id === updateTask.id);
-    //   if (index !== -1) {
-    //     state.tasks.splice(index, 1, updateTask);
-    //   }
-    // },
-    // SET_TAREFA_EM_EDICAO(state, tarefa) {
-    //   state.tarefaEmEdicao = tarefa;
-    // },
+    SET_TAREFA_SELECIONADA(state, tarefa) {
+      state.tarefaSelecionada = tarefa;
+    },
+
+    ATUALIZAR_TAREFA(state, tarefaEditada) {
+      const index = state.tarefas.findIndex((tarefa) => tarefa.id === tarefaEditada.id);
+      if (index !== -1) {
+        state.tarefas.splice(index, 1, tarefaEditada);
+      }
+    },
   },
 
-
   actions: {
-    addTask({ commit }, task) { // Adicione a definição da action addTask
-      commit('ADD_TASK', task);
+    adicionarTarefa({ commit }, tarefa) {
+      commit('ADD_TASK', tarefa);
     },
-    removeTask({ commit }, id) {
+
+    removerTarefa({ commit }, id) {
       commit('REMOVE_TASK', id);
     },
-    completeTask({ commit }, id) {
+
+    concluirTarefa({ commit }, id) {
       commit('COMPLETE_TASK', id);
     },
 
-    // editTask({ commit, state }, updatedTask) {
-    //   const taskIndex = state.tasks.findIndex(task => task.id === updatedTask.id);
-    //   if (taskIndex !== -1) {
-    //     commit('UPDATE_TASK', updatedTask);
-    //   }
-    // },
-    // setTarefaEmEdicao({ commit }, tarefa) {
-    //   commit('SET_TAREFA_EM_EDICAO', tarefa);
-    // },
+    selecionarTarefa({ commit }, tarefa) {
+      commit("SET_TAREFA_SELECIONADA", tarefa);
+    },
+
+    atualizarTarefa({ commit }, tarefaEditada) {
+      commit("ATUALIZAR_TAREFA", tarefaEditada);
+      commit("SET_TAREFA_SELECIONADA", null);
+    },
   },
+
   getters: {
-    allTasks: (state) => state.tasks,
+    AllTasks: (state) => state.tarefas,
   },
 });

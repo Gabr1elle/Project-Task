@@ -8,7 +8,7 @@
             <div class="task-input input-group mb-3 ">
               <input
                 v-model="newTask.title"
-                @keyup.enter="addTask"
+                @keyup.enter="adicionarTarefa"
                 type="text"
                 class="form-control mr-4"
                 placeholder="Digite o título da tarefa"
@@ -21,7 +21,7 @@
               />
               <div class="input-group-append">
                 <button
-                  @click="addTask"
+                  @click="adicionarTarefa"
                   type="button"
                   class="btn btn-outline-dark mr-4"
                 >
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+// import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
 import EditarTarefa from "./EditarTarefa.vue";
 
@@ -73,7 +73,7 @@ export default {
     },
   },
   methods: {
-    addTask() {
+    adicionarTarefa() {
       if (this.newTask.title.trim() !== "" && this.newTask.text.trim() !== "") {
         const newTask = {
           id: Date.now(),
@@ -81,7 +81,7 @@ export default {
           text: this.newTask.text.trim(),
           completed: false,
         };
-        this.$store.dispatch("addTask", newTask);
+        this.$store.dispatch("adicionarTarefa", newTask);
         this.newTask.title = "";
         this.newTask.text = "";
         
@@ -89,23 +89,23 @@ export default {
     },
 
     concluirTarefa(id) {
-      this.$store.dispatch("completeTask", id);
+      this.$store.dispatch("concluirTarefa", id);
     
     },
     excluirTarefa(id) {
-      this.$store.dispatch("removeTask", id);
+      this.$store.dispatch("removerTarefa", id);
 
     },
 
      // Método para abrir o modal com detalhes da tarefa
     mostrarDetalhes(tarefa) {
-      this.selectedTask = tarefa;  
+      this.selecionarTarefa = tarefa;  
 
     },
 
     // Método para limpar a tarefa selecionada quando o modal é fechado
-    clearSelectedTask() {
-      this.selectedTask = null;
+    clearselecionarTarefa() {
+      this.selecionarTarefa = null;
     },
   },
 };
