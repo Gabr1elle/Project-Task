@@ -61,10 +61,6 @@
         </div>
       </div>
     </div>
-
-    <footer class="custom-footer position-fixed">
-      TaskMaster - Gerenciador de tarefas @2023
-    </footer>
   </div>
 </template>
 
@@ -111,7 +107,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #73756e;
+  background: #4f5249;
   color: rgb(255, 255, 255);
 }
 </style>
