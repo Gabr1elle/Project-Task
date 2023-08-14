@@ -4,7 +4,8 @@
       <div class="col-md-10 my-5 py-5">
         <div class="card">
           <div class="card-body card-body-centered text-center ">
-            <h2 class="text-center mb-5">TaskMaster - Gerenciando suas tarefas</h2>
+            <h3 class="animated-title text-center mb-5">Gerenciar Tarefas</h3>
+
             <div class="task-input input-group mb-3 ">
               <input
                 v-model="newTask.title"
@@ -23,7 +24,7 @@
                 <button
                   @click="adicionarTarefa"
                   type="button"
-                  class="btn btn-outline-dark mr-4"
+                  class="btn btn-outline-dark  mr-4 ml-4"
                 >
                   Adicionar
                 </button>
@@ -125,7 +126,26 @@ export default {
 }
 
 .container-menor {
-  max-width: 800px;
+  max-width: 900px;
+}
+
+
+.animated-title {
+    font-size: 36px;
+    /* Outros estilos de título */
+    animation: fadeInUp 1s ease-in-out; /* Nome da animação e duração */
+
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 </style>
