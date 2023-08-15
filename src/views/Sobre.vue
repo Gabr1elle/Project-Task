@@ -28,7 +28,7 @@
 .content {
   max-width: 900px;
   padding: 80px;
-  background-color: #ffee9d;
+  background-color: #fffae5;
   box-shadow: 0 2px 10px #ffee9d;
   border-radius: 20px;
   margin-top: 80px;

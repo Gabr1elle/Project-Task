@@ -4,22 +4,25 @@
       <div class="col-md-10 my-5 py-5">
         <div class="card">
           <div class="card-body card-body-centered text-center ">
-            <h3 class="animated-title text-center mb-5 align-middle titulo"> TaskMaster - Gerenciador de Tarefas <font-awesome-icon class="h4 mb-0" :icon="['fas', 'circle-check']" /> </h3> 
+            <h3 class="animated-title text-center mb-5 align-middle titulo"> Gerenciador TaskMaster  <font-awesome-icon class="h4 mb-0" :icon="['fas', 'circle-check']" /> </h3> 
 
 
             <div class="task-input input-group mb-3 ">
-              <input
+              <input 
+                class="form-control mr-4"
+                name="title" 
+                type="text"
                 v-model="newTask.title"
                 @keyup.enter="adicionarTarefa"
-                type="text"
-                class="form-control mr-3"
                 placeholder="Digite o título da tarefa"
               />
+              
               <input
                 v-model="newTask.text"
                 type="text"
                 class="form-control mr-4"
                 placeholder="Digite o texto da tarefa"
+
               />
               <div class="input-group-append">
                 <button
@@ -50,12 +53,14 @@
 <script>
 // import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 
 export default {
   components: {
     TarefaItem,
+    FontAwesomeIcon
   },
   data() {
     return {
@@ -85,6 +90,8 @@ export default {
         this.newTask.title = "";
         this.newTask.text = "";
         
+      } else{ 
+        window.alert('campos em branco')
       }
     },
 
@@ -115,20 +122,21 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap");
 
 @font-face {
-    font-family: 'Existence';
-    src: url('@/assets/fonts/Existence-Light.eot');
-    src: url('@/assets/fonts/Existence-Light.eot?#iefix') format('embedded-opentype'),
-        url('@/assets/fonts/Existence-Light.woff2') format('woff2'),
-        url('@/assets/fonts/Existence-Light.woff') format('woff'),
-        url('@/assets/fonts/Existence-Light.ttf') format('truetype'),
-        url('@/assets/fonts/Existence-Light.svg#Existence-Light') format('svg');
-    font-weight: 300;
+    font-family: 'Caviar Dreams';
+    src: url('@/assets/fonts/CaviarDreams.eot');
+    src: url('@/assets/fonts/CaviarDreams.eot?#iefix') format('embedded-opentype'),
+        url('@/assets/fonts/CaviarDreams.woff2') format('woff2'),
+        url('@/assets/fonts/CaviarDreams.woff') format('woff'),
+        url('@/assets/fonts/CaviarDreams.ttf') format('truetype'),
+        url('@/assets/fonts/CaviarDreams.svg#CaviarDreams') format('svg');
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
+
 .titulo { 
-  font-family: 'Existence';
+  font-family: 'Caviar Dreams';
 }
 .h2 {
   font-family: "Raleway", sans-serif;
