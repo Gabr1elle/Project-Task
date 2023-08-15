@@ -5,7 +5,7 @@
       style="background-color: #FFD100"
     >
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">TaskMaster</a>
+        <a class="navbar-brand " href="#">TaskMaster</a>
         
         <button
           class="navbar-toggler"
@@ -85,9 +85,12 @@ export default {
 </script>
 
 <style>
+
+
 body {
   background: #ffffff;
 }
+
 
 #app {
   font-family: "Raleway", sans-serif;

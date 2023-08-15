@@ -4,14 +4,15 @@
       <div class="col-md-10 my-5 py-5">
         <div class="card">
           <div class="card-body card-body-centered text-center ">
-            <h3 class="animated-title text-center mb-5">Gerenciar Tarefas</h3>
+            <h3 class="animated-title text-center mb-5 align-middle titulo"> TaskMaster - Gerenciador de Tarefas <font-awesome-icon class="h4 mb-0" :icon="['fas', 'circle-check']" /> </h3> 
+
 
             <div class="task-input input-group mb-3 ">
               <input
                 v-model="newTask.title"
                 @keyup.enter="adicionarTarefa"
                 type="text"
-                class="form-control mr-4"
+                class="form-control mr-3"
                 placeholder="Digite o título da tarefa"
               />
               <input
@@ -24,7 +25,7 @@
                 <button
                   @click="adicionarTarefa"
                   type="button"
-                  class="btn btn-outline-dark mr-4 ml-4"
+                  class="btn btn-outline-dark mr-4 ml-4 mx-1"
                 >
                   Adicionar
                 </button>
@@ -113,6 +114,22 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap");
 
+@font-face {
+    font-family: 'Existence';
+    src: url('@/assets/fonts/Existence-Light.eot');
+    src: url('@/assets/fonts/Existence-Light.eot?#iefix') format('embedded-opentype'),
+        url('@/assets/fonts/Existence-Light.woff2') format('woff2'),
+        url('@/assets/fonts/Existence-Light.woff') format('woff'),
+        url('@/assets/fonts/Existence-Light.ttf') format('truetype'),
+        url('@/assets/fonts/Existence-Light.svg#Existence-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+.titulo { 
+  font-family: 'Existence';
+}
 .h2 {
   font-family: "Raleway", sans-serif;
 }

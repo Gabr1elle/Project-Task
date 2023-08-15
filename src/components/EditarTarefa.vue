@@ -13,14 +13,15 @@
     </div>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+      <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">
         Fechar
       </button>
       <button
+        type="button"
         id="salvar"
         @click="salvarAlteracoes"
         data-bs-dismiss="modal"
-        class="btn btn-primary"
+        class="btn btn-outline-warning"
       >
         Salvar alterações
       </button>

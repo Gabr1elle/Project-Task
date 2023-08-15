@@ -21,15 +21,15 @@
   min-height: 20vh;
   background-color: #ffffff;
   margin-top: 40;
-  color: #000000;
+  color: #3a3a3a;
   
 }
 
 .content {
   max-width: 900px;
   padding: 80px;
-  background-color: #f8f4ac;
-  box-shadow: 0 2px 10px #f8f4ac;
+  background-color: #ffee9d;
+  box-shadow: 0 2px 10px #ffee9d;
   border-radius: 20px;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -37,7 +37,7 @@
 
 .textAbout {
   text-align: justify;
-  color: #000000;
+  color: #3a3a3a;
 }
 </style>
 
