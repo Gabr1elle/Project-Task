@@ -2,7 +2,7 @@
   <div id="app">
     <nav
       class="navbar navbar-expand-lg fixed-top"
-      style="background-color: #ffff00"
+      style="background-color: #FFD100"
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="#">TaskMaster</a>
@@ -108,7 +108,7 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  background: #a7a7a7;
+  background: #333533;
   color: rgb(255, 255, 255);
 }
 </style>

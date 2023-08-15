@@ -8,9 +8,10 @@
       </div>
       <div>
         <button
+          type="button" 
           @click="concluirTarefa(tarefa.id)"
           v-if="!tarefa.completed"
-          class="btn btn-success btn-xs"
+          class="btn btn-outline-info"
         >
           <font-awesome-icon :icon="['fas', 'check']" />
         </button>
@@ -19,11 +20,11 @@
           type="button"
           data-bs-toggle="modal" data-bs-target="#exampleModal"
           @click="editarTarefa(tarefa)"
-          class="btn btn-primary btn-xs mx-2">
+          class="btn btn-outline-warning  mx-2">
           <font-awesome-icon :icon="['fas', 'pen']" />
         </button>
 
-        <button @click="excluirTarefa(tarefa.id)" class="btn btn-danger btn-xs">
+        <button @click="excluirTarefa(tarefa.id)" class="btn btn-outline-dark btn-xs">
           <font-awesome-icon :icon="['fas', 'xmark']" />
         </button>
       </div>

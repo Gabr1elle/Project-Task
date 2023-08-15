@@ -24,7 +24,7 @@
                 <button
                   @click="adicionarTarefa"
                   type="button"
-                  class="btn btn-outline-dark  mr-4 ml-4"
+                  class="btn btn-outline-dark mr-4 ml-4"
                 >
                   Adicionar
                 </button>
