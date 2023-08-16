@@ -25,7 +25,7 @@
         </button>
 
         <button @click="excluirTarefa(tarefa.id)" class="btn btn-outline-dark btn-xs">
-          <font-awesome-icon :icon="['fas', 'xmark']" />
+          <font-awesome-icon :icon="['fas', 'trash']" />
         </button>
       </div>
     </div>

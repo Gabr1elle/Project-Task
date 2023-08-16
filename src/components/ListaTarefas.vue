@@ -4,7 +4,7 @@
       <div class="col-md-10 my-5 py-5">
         <div class="card">
           <div class="card-body card-body-centered text-center ">
-            <h3 class="animated-title text-center mb-5 align-middle titulo"> Gerenciador TaskMaster  <font-awesome-icon class="h4 mb-0" :icon="['fas', 'circle-check']" /> </h3> 
+            <h3 class="animated-title text-center mb-5 align-middle titulo"> Adicione sua Tarefa <font-awesome-icon class="h4 mb-0" :icon="['fas', 'circle-check']" /> </h3> 
 
 
             <div class="task-input input-group mb-3 ">
@@ -54,6 +54,7 @@
 // import { mapActions } from 'vuex';
 import TarefaItem from "./TarefaItem.vue";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Swal from 'sweetalert2';
 
 
 
@@ -90,8 +91,17 @@ export default {
         this.newTask.title = "";
         this.newTask.text = "";
         
-      } else{ 
-        window.alert('campos em branco')
+      } else {
+      Swal.fire({
+        title: 'Campos em Branco',
+        text: 'Por favor, preencha todos os campos.',
+        icon: 'warning', 
+        confirmButtonText: 'Fechar',
+        width: 400, 
+        height: 100, 
+        confirmButtonColor: '#ff9900',
+        
+      });
       }
     },
 
@@ -116,28 +126,16 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;500&display=swap");
 
-@font-face {
-    font-family: 'Caviar Dreams';
-    src: url('@/assets/fonts/CaviarDreams.eot');
-    src: url('@/assets/fonts/CaviarDreams.eot?#iefix') format('embedded-opentype'),
-        url('@/assets/fonts/CaviarDreams.woff2') format('woff2'),
-        url('@/assets/fonts/CaviarDreams.woff') format('woff'),
-        url('@/assets/fonts/CaviarDreams.ttf') format('truetype'),
-        url('@/assets/fonts/CaviarDreams.svg#CaviarDreams') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2? family= Lato:wght@300 & family= Merriweather+Sans:wght@300 & family= Noto+Serif:ital,wght@1,500 & family= Playfair+Display:wght@500 & family= Raleway:wght@200;500 & display=swap');
 
-
-.titulo { 
+/* .titulo { 
   font-family: 'Caviar Dreams';
-}
+} */
 .h2 {
   font-family: "Raleway", sans-serif;
 }
@@ -172,5 +170,13 @@ export default {
         transform: translateY(0);
     }
 }
+
+/* custom-sweetalert.css */
+
+.swal2-popup {
+  border-radius: 10px; /* Altere esse valor para ajustar a curvatura da borda */
+
+}
+
 
 </style>

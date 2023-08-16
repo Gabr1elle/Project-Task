@@ -88,7 +88,7 @@ export default {
 
 
 body {
-  background: #fffae5;
+  background: #ffffff;
 }
 
 

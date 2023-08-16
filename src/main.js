@@ -6,9 +6,9 @@ import router from './router'
 import store from './store'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck, faPen, faXmark, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPen, faXmark, faCircleCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheck, faXmark, faPen, faCircleCheck)
+library.add(faCheck, faXmark, faPen, faCircleCheck, faTrash)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
